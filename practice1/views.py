@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
+from .forms import PostModelForm
 # Create your views here.
 
 def index(request):
@@ -15,12 +16,37 @@ def show(request, pk):
         'post': post,
     })
 
-def new():
-    pass
 
-def edit():
-    pass
+def new(request):
+    form = PostModelForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('posts_index')
 
+    return render(request, 'posts/new.html', {
+        'form': form
+    })
+
+def edit(request, pk):
+    # post = Post.objects.get(pk=pk)
+    post = get_object_or_404(Post, pk=pk)
+    form = PostModelForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('posts_index')
+    return render(request, 'posts/edit.html', {
+        'form': form
+    })
+
+    return render(request, 'posts/edit.html', {
+        'form': form
+    })
+
+
+def delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('posts_index')
 
 
 

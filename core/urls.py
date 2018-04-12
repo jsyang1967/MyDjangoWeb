@@ -25,7 +25,10 @@ urlpatterns = [
     path('hi/<int:n1>/<int:n2>', hi),
     path('r/<int:start>/<int:stop>', r),
     path('tag_test/', tag_test),
-    path('posts/', views.index),
+    path('posts/', views.index, name='posts_index'),
+    path('posts/new/', views.new, name='posts_new'),
     path('posts/<int:pk>/', views.show, name='posts_show'),
+    path('posts/edit/<int:pk>', views.edit, name='posts_edit'),
+    path('posts/delete/<int:pk>', views.delete, name='posts_delete'),
     path('admin/', admin.site.urls),
 ]

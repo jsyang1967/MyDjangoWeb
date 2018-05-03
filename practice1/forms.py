@@ -1,7 +1,8 @@
-from django.forms import ModelForm
+from core.forms import BootstrapModelForm
 from .models import Post
 
-class PostModelForm(ModelForm):
+class PostModelForm(BootstrapModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = '__all__'
+        # fields = ['title', 'content']

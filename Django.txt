@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for e in error %}
+ {{ e }} <br>
+{% endfor %}
+
+<form action="#" method="post">
+    {% csrf_token %}
+  Title:<br>
+  <input type="text" name="title" required>
+  <br>
+  Content:<br>
+  <input type="text" name="content">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+
+
+    #title = request.POST['title']
+    #if request.method == 'POST':
+    #    _title = request.POST.get('title')
+    #    _content = request.POST.get('content')
+     #   if _title == "" or _content =="":
+     #       return render(request, 'posts/new.html', {
+     #           'error':['有資料未填']
+     #       })
+     #   Post.objects.create(title=_title, content=_content)
+     #   return redirect('posts_index')

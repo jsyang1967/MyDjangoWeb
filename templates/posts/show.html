@@ -1,6 +1,12 @@
+{% extends "layout.html" %}
+{% block main %}
+
+
 <h1> # {{ post.id }} - {{ post.title }}#</h1>
 <hr>
 {{ post.content }}
 <hr>
-<a href ="{% url 'posts_index' %}"><<Back to list</a>
-<a href="{% url 'posts_delete' post.id %}">Delete</a>
+<a href ="{% url 'posts:index' %}"><<Back to list</a>
+<a href="{% url 'posts:delete' post.id %}">Delete</a>
+
+{% endblock %}
